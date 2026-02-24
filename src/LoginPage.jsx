@@ -5,16 +5,65 @@ function LoginPage() {
   const nav = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loginType, setLoginType] = useState("user"); // "user" or "doctor"
+  const [error, setError] = useState("");
+
+  // Demo doctor credentials
+  const doctorCredentials = [
+    {
+      email: "priya.sharma@therapymail.com",
+      password: "doctor123",
+      name: "Dr. Priya Sharma",
+      id: 1
+    },
+    {
+      email: "rohan.kumar@therapymail.com",
+      password: "doctor123",
+      name: "Dr. Rohan Kumar",
+      id: 2
+    },
+    {
+      email: "sneha.iyer@therapymail.com",
+      password: "doctor123",
+      name: "Dr. Sneha Iyer",
+      id: 3
+    }
+  ];
 
   const handleLogin = (e) => {
     e.preventDefault();
+    setError("");
 
     if (email.trim() === "" || password.trim() === "") {
-      alert("Enter details");
+      setError("Please enter both email and password");
       return;
     }
 
-    nav("/"); // 👉 Navigate to home
+    if (loginType === "user") {
+      // User login - simple validation for demo
+      nav("/"); // Navigate to home
+    } else {
+      // Doctor login - validate credentials
+      const doctor = doctorCredentials.find(
+        doc => doc.email === email && doc.password === password
+      );
+
+      if (doctor) {
+        // Store authentication data
+        const authData = {
+          isAuthenticated: true,
+          doctorId: doctor.id,
+          doctorName: doctor.name,
+          doctorEmail: doctor.email,
+          loginTime: new Date().toISOString()
+        };
+
+        localStorage.setItem('doctorAuth', JSON.stringify(authData));
+        nav("/doctor-dashboard");
+      } else {
+        setError("Invalid doctor credentials. Please try again.");
+      }
+    }
   };
 
   return (
@@ -23,31 +72,58 @@ function LoginPage() {
         <h1 className="login-title">Welcome Back</h1>
         <p className="login-subtitle">Sign in to continue to MindWell Connect</p>
 
+        {/* Role Selector */}
+        <div className="role-selector">
+          <button
+            type="button"
+            className={`role-btn ${loginType === "user" ? "active" : ""}`}
+            onClick={() => { setLoginType("user"); setError(""); setEmail(""); setPassword(""); }}
+          >
+            👤 User
+          </button>
+          <button
+            type="button"
+            className={`role-btn ${loginType === "doctor" ? "active" : ""}`}
+            onClick={() => { setLoginType("doctor"); setError(""); setEmail(""); setPassword(""); }}
+          >
+            👨‍⚕️ Doctor / Therapist
+          </button>
+        </div>
+
         <form onSubmit={handleLogin}>
+          {error && (
+            <div className="error-message">
+              <span className="error-icon">⚠️</span>
+              {error}
+            </div>
+          )}
+
           <div className="input-group">
-            <label>Email</label>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="you@example.com"
+              placeholder=" "
               required
+              autoComplete="email"
             />
+            <label>Email</label>
           </div>
 
           <div className="input-group">
-            <label>Password</label>
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="••••••••"
+              placeholder=" "
               required
+              autoComplete="current-password"
             />
+            <label>Password</label>
           </div>
 
           <button type="submit" className="login-button">
-            Sign In
+            Sign In as {loginType === "user" ? "User" : "Doctor"}
           </button>
         </form>
 

@@ -111,7 +111,7 @@ export default function HomePage() {
   return (
     <div className="home-page">
       <nav className="navbar">
-        <div className="nav-brand">MindCare Connect</div>
+        <div className="nav-brand">ZenFlow Connect</div>
         <ul className="nav-links">
           <li>
             <button 
