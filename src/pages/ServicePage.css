@@ -1,0 +1,45 @@
+.service-page {
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+.resource-card,
+.chat-box,
+.chat-input {
+  background: #f7f7f7;
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 10px;
+}
+
+.chat-box {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.chat-msg {
+  padding: 8px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.chat-input {
+  display: flex;
+  gap: 10px;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.chat-input button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  background: #4e89ff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}

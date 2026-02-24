@@ -1,0 +1,92 @@
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  color: white;
+  text-align: center;
+  padding: 3rem 1rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+}
+
+.hero-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero-section p {
+  font-size: 1.2rem;
+}
+
+/* Flexbox Container for Therapist Cards */
+.therapist-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+/* Therapist Card */
+.therapist-card {
+  background: linear-gradient(145deg, #ff9a9e 0%, #fad0c4 100%);
+  border-radius: 20px;
+  padding: 1.5rem;
+  width: 300px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, background 0.5s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.therapist-card:hover {
+  transform: translateY(-8px);
+  background: linear-gradient(145deg, #a1c4fd 0%, #c2e9fb 100%);
+}
+
+/* Hand cursor on doctor name */
+.doctor-name {
+  font-size: 1.5rem;
+  margin-bottom: 0.3rem;
+  cursor: url('https://cdn-icons-png.flaticon.com/512/60/60525.png'), auto;
+  transition: color 0.3s;
+}
+
+.doctor-name:hover {
+  color: #fff;
+}
+
+/* Specialization subtitle */
+.doctor-specialization {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+/* Expanded Details */
+.expanded {
+  background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+}
+
+.doctor-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem; /* spacing between info fields */
+  margin-top: 1rem;
+  line-height: 1.5;
+}
+
+/* Book Button */
+.book-btn {
+  margin-top: 1rem;
+  background: #6a11cb;
+  color: white;
+  border: none;
+  padding: 0.7rem 1.3rem;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.book-btn:hover {
+  background: #2575fc;
+}
